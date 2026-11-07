@@ -1,5 +1,22 @@
 // Lead form: sends to /api/lead (Netlify Function). Success is shown only after the server confirms.
 (function () {
+  // Hide the floating contact bar while the contact section is on screen or a field is focused,
+  // so it never covers the form or its submit button (especially with the mobile keyboard open).
+  var bar = document.querySelector('.quick-contact');
+  var contact = document.getElementById('contact');
+  if (bar && contact) {
+    var inView = false, focused = false;
+    var update = function () { bar.classList.toggle('is-hidden', inView || focused); };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        update();
+      }).observe(contact);
+    }
+    contact.addEventListener('focusin', function () { focused = true; update(); });
+    contact.addEventListener('focusout', function () { focused = false; update(); });
+  }
+
   var form = document.getElementById('lead-form');
   if (!form) return;
   var box = document.getElementById('result');

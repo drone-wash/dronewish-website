@@ -6,3 +6,6 @@
 .result.error{background:#ffe1e1;color:#5a1414}
 .result a{color:inherit;font-weight:700}
 form button[disabled]{opacity:.6;cursor:wait}
+.quick-contact{transition:opacity .2s,transform .2s}
+.quick-contact.is-hidden{opacity:0;transform:translateY(120%);pointer-events:none;visibility:hidden}
+@media(max-width:760px){.footer{padding-bottom:96px}}
