@@ -1,0 +1,1 @@
+document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();const box=document.querySelector('#result');box.hidden=false;box.textContent='הטופס נבדק בהצלחה. זהו דמו — הפרטים לא נשלחו ולא נשמרו.';});
